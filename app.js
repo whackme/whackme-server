@@ -2,10 +2,41 @@ const app = require('express')();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
+// setInterval(function())
+
+
 io.on('connection', function(socket) {
-	// client connect akan masuk sini
+	function randomX () {
+		return Math.floor(Math.random()*7)
+	}
+	function randomY () {
+		return Math.floor(Math.random()*7)
+	}
+	
+	let position = {
+		x: randomX(),
+		y: randomY()
+	}
+	
 	console.log(`Socket.io client connected`);
-	socket.emit('init', { message: 'Ini dari server' })
+	io.emit('position', position)
+	
+
+	socket.on('changePosition', function () {
+		function randomX () {
+			return Math.floor(Math.random()*7)
+		}
+		function randomY () {
+			return Math.floor(Math.random()*7)
+		}
+		
+		let position = {
+			x: randomX(),
+			y: randomY()
+		}
+
+		io.emit('position', position)
+	})
 })
 
 server.listen(3000, () => {
