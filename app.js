@@ -6,6 +6,7 @@ const io = require('socket.io')(server);
 
 
 io.on('connection', function(socket) {
+
 	function randomX () {
 		return Math.floor(Math.random()*7)
 	}
@@ -18,6 +19,7 @@ io.on('connection', function(socket) {
 		y: randomY()
 	}
 	
+
 	console.log(`Socket.io client connected`);
 	io.emit('position', position)
 	
