@@ -39,9 +39,13 @@ io.on('connection', function(socket) {
 				}
 				io.emit('position', position)
 		})
+		socket.on('logout', function () {
+			insertUser = []
+			socket.broadcast.emit('logoutAllUser')
+		})
 
-	
-			
+
+
 		socket.on('insertUser', function (payload) {
 		
 		if(insertUser.length === 0) {
