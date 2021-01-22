@@ -26,8 +26,7 @@ io.on('connection', function(socket) {
 
 		})
 		
-		socket.on('changePosition', function () {
-	
+		socket.on('changePosition', function () {	
 				function randomX () {
 					return Math.floor(Math.random()*7)
 				}
@@ -39,8 +38,8 @@ io.on('connection', function(socket) {
 					y: randomY()
 				}
 				io.emit('position', position)
-	
 		})
+
 	
 			
 		socket.on('insertUser', function (payload) {
@@ -64,7 +63,6 @@ io.on('connection', function(socket) {
 			socket.broadcast.emit('updateSum', insertUser)
 		}		
 	})
-
 	
 })
 
